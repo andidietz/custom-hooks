@@ -3,19 +3,14 @@ import {useState} from 'react'
 import axios from 'axios'
 
 const useAxios = (url) => {
-	const [state, setState] = useState(null)
+	const [state, setState] = useState([])
 
-	const fetchData = async (url) => {
+	const fetchData = async () => {
 		const res = await axios.get(url)
-		console.log('res.data', res.data)
-		setState(res.data)
+		setState(data => [...data, res.data])
 	}	
-
-	const handleClick = () => {
-		fetchData(url)
-	}
 	  
-	return {state, handleClick}
+	return [state, fetchData]
 }
 
 export default useAxios;

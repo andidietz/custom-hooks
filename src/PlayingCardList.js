@@ -16,10 +16,12 @@ function PlayingCardList() {
     <div className="PlayingCardList">
       <h3>Pick a card, any card!</h3>
       <div>
-        <button onClick={handleClick}>Add a playing card!</button>
+        <button onClick={() => handleClick()}>Add a playing card!</button>
       </div>
       <div className="PlayingCardList-card-area">
-        {cardComponents}
+        {cards.map(cardData => 
+          (<PlayingCard key={cardData.code} front={cardData.cards[0].image} />)
+        )}
       </div>
     </div>
   )
