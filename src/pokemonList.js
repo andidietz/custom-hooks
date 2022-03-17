@@ -29,4 +29,4 @@ const pokemon = [
   "garchomp"
 ];
 
-export default pokemon;
+export default pokemon

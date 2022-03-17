@@ -13,4 +13,4 @@ const useAxios = (url) => {
 	return [state, fetchData]
 }
 
-export default useAxios;
+export default useAxios

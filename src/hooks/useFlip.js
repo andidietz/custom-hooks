@@ -8,4 +8,5 @@ const useFlip = () => {
     }
     return [state, flipCard]
 }
+
 export default useFlip

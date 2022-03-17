@@ -4,7 +4,7 @@ import useFlip from "./hooks/useFlip"
 import "./PokemonCard.css"
 
 function PokemonCard({ front, back, name, stats }) {
-  const [isFacingUp, flip] = useFlip
+  const [isFacingUp, flip] = useFlip()
 
   const cardFrontComponent = (
     <div className="PokemonCard-front">
@@ -12,7 +12,7 @@ function PokemonCard({ front, back, name, stats }) {
       <div>
         <p className="PokemonCard-name">{name}</p>
         <ul className="PokemonCard-stats">
-          {stats.map(stat => (
+          {stats && stats.map(stat => (
             <li key={stat.name}>
               <em>{stat.name}</em>: {stat.value}
             </li>

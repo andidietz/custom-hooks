@@ -6,11 +6,11 @@ import "./PlayingCardList.css"
 
 function PlayingCardList() {
   const BASE_URL = "https://deckofcardsapi.com/api/deck/new/draw/"
-  const {cards, handleClick} = useAxios(BASE_URL)
+  const [cards, handleClick] = useAxios(BASE_URL)
 
-  const cardComponents = cards ? 
-    <PlayingCard key={cards.cards.code} front={cards.cards[0].image} />
-      : null
+  const cardComponents = cards && cards.map(cardData => 
+      (<PlayingCard key={cardData.code} front={cardData.cards[0].image} />)
+    )
 
   return (
     <div className="PlayingCardList">
@@ -19,14 +19,12 @@ function PlayingCardList() {
         <button onClick={() => handleClick()}>Add a playing card!</button>
       </div>
       <div className="PlayingCardList-card-area">
-        {cards.map(cardData => 
-          (<PlayingCard key={cardData.code} front={cardData.cards[0].image} />)
-        )}
+        {cardComponents}
       </div>
     </div>
   )
 }
 
-PlayingCardList.defaultProps = {};
+PlayingCardList.defaultProps = {}
 
 export default PlayingCardList
